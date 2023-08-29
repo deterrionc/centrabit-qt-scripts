@@ -1,0 +1,19 @@
+Arbitrage Algorithm Script Documentation
+
+1. User Configuration:
+
+  - Trading Platforms: Users are required to specify their preferred trading centers, which can include options like Centrabit, Bitfinex, or Binance.
+
+  - Currency Pair: Users must designate the currency pair they intend to use for the arbitrage by setting the symbolSetting.
+
+  - Trading Volume: Users should determine the trading amount for each transaction. This amount should be in the Base currency. For instance, if the symbolSetting is "LTC/BTC", then the Base currency is LTC.
+
+2. Operational Procedure:
+
+  - Connection Verification: Upon initiating the script, it first verifies the connection by fetching transactions from the past hour. Should there be no transactions during this period, an error message will be logged, and the script will terminate.
+
+  - Balance Examination: Subsequent to connection validation, the script reviews the balances of the respective currencies in the selected trading platforms.
+
+  - Price Charting: Post the balance assessment, it generates three price charts reflecting the past hour's data.
+
+  - Real-time Price Analysis & Arbitrage Execution: After chart generation, the script actively monitors real-time prices. Based on these prices, it executes arbitrage buy and sell operations. Prior to any transaction, the script reassesses balances. Should there be insufficient funds for the intended operation, an error message is logged.
