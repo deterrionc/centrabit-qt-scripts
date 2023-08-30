@@ -28,10 +28,10 @@ float   STOPLOSSAT      = 0.05;                             # Stop loss point at
 float   EXPECTANCYBASE  = 0.1;                              # expectancy base
 float   FEE             = 0.01;                             # taker fee in percentage
 boolean USETRAILINGSTOP = false;                            # Trailing stop flag
-string  logFilePath     = "c:/bbtest_log_tradelist_";       # Please make sure this path any drive except C:
 #############################################
 
 # Trading Variables
+string  logFilePath     = "c:/bbtest_log_tradelist_";       # Please make sure this path any drive except C:
 string  position        = "flat";
 string  prevPosition    = "";    # "", "long", "short"
 float   sma             = 100.0;
