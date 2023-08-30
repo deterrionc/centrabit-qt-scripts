@@ -9,9 +9,62 @@ import Charts;
 import Files;
 import Processes;
 
-string  exchange1       = "Centrabit";
-string  exchange2       = "Bitfinex";
+#############################################
+# User settings
+string  exchangeSetting = "Centrabit";
 string  symbolSetting   = "LTC/BTC";
+integer SMALEN          = 20;                       # SMA period length
+float   STDDEVSETTING   = 1.0;                      # Standard Deviation
+string  RESOL           = "1m";                     # Bar resolution
+float   AMOUNT          = 0.1;                      # The amount of buy or sell order at once
+float   STOPLOSSAT      = 0.01;                     # Stop loss point at percentage
+boolean USETRAILINGSTOP = true;
+
+print(exchangeSetting);
+print(symbolSetting);
+print(SMALEN);
+print(STDDEVSETTING);
+print(RESOL);
+print(AMOUNT);
+print(STOPLOSSAT);
+print(USETRAILINGSTOP);
+
+if (strlength(getEnv("exchangeSetting")) != 0) {
+  exchangeSetting = getEnv("exchangeSetting");
+}
+if (strlength(getEnv("symbolSetting")) != 0) {
+  symbolSetting = getEnv("symbolSetting");
+}
+if (strlength(getEnv("SMALEN")) != 0) {
+  SMALEN = toInteger(getEnv("SMALEN"));
+}
+if (strlength(getEnv("STDDEVSETTING")) != 0) {
+  STDDEVSETTING = toFloat(getEnv("STDDEVSETTING"));
+}
+if (strlength(getEnv("RESOL")) != 0) {
+  RESOL = getEnv("RESOL");
+}
+if (strlength(getEnv("AMOUNT")) != 0) {
+  AMOUNT = toFloat(getEnv("AMOUNT"));
+}
+if (strlength(getEnv("STOPLOSSAT")) != 0) {
+  STOPLOSSAT = toFloat(getEnv("STOPLOSSAT"));
+}
+if (strlength(getEnv("USETRAILINGSTOP")) != 0) {
+  USETRAILINGSTOP = toBoolean(getEnv("USETRAILINGSTOP"));
+}
+
+print("\n");
+print(exchangeSetting);
+print(symbolSetting);
+print(SMALEN);
+print(STDDEVSETTING);
+print(RESOL);
+print(AMOUNT);
+print(STOPLOSSAT);
+print(USETRAILINGSTOP);
+
+#############################################
 
 event onPubOrderFilled(string exchange, transaction t) {
   print(exchange);
@@ -26,19 +79,6 @@ event onOwnOrderFilled(string exchange, transaction t) {
 }
 
 void main() {
-  integer conTestStartTime = getCurrentTime() - 60 * 60 * 1000000;           # 1 hour before
-  integer conTestEndTime = getCurrentTime();
-  transaction exchange1Trans[] = getPubTrades(exchange1, symbolSetting, conTestStartTime, conTestEndTime);
-  transaction exchange2Trans[] = getPubTrades(exchange2, symbolSetting, conTestStartTime, conTestEndTime);
-
-  float feeSum = 0.0;
-
-  for (integer i=0; i<sizeof(exchange1Trans); i++) {
-    #drawChartPriceLine("2", exchange2, exchange2Trans[i].tradeTime, exchange2Trans[i].price);
-    #feeSum = feeSum + exchange1Trans[i].fee;
-    #print(feeSum);
-  }
-
 
 }
 

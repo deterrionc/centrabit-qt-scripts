@@ -25,11 +25,37 @@ float   STDDEVSETTING   = 1.0;                      # Standard Deviation
 string  RESOL           = "1m";                     # Bar resolution
 float   AMOUNT          = 0.1;                      # The amount of buy or sell order at once
 float   STOPLOSSAT      = 0.01;                     # Stop loss point at percentage
-string  logFilePath     = "c:/bb_log_tradelist_";   # Please make sure this path any drive except C:
 boolean USETRAILINGSTOP = true;
+
+if (strlength(getEnv("exchangeSetting")) != 0) {
+  exchangeSetting = getEnv("exchangeSetting");
+}
+if (strlength(getEnv("symbolSetting")) != 0) {
+  symbolSetting = getEnv("symbolSetting");
+}
+if (strlength(getEnv("SMALEN")) != 0) {
+  SMALEN = toInteger(getEnv("SMALEN"));
+}
+if (strlength(getEnv("STDDEVSETTING")) != 0) {
+  STDDEVSETTING = toFloat(getEnv("STDDEVSETTING"));
+}
+if (strlength(getEnv("RESOL")) != 0) {
+  RESOL = getEnv("RESOL");
+}
+if (strlength(getEnv("AMOUNT")) != 0) {
+  AMOUNT = toFloat(getEnv("AMOUNT"));
+}
+if (strlength(getEnv("STOPLOSSAT")) != 0) {
+  STOPLOSSAT = toFloat(getEnv("STOPLOSSAT"));
+}
+if (strlength(getEnv("USETRAILINGSTOP")) != 0) {
+  USETRAILINGSTOP = toBoolean(getEnv("USETRAILINGSTOP"));
+}
+
 #############################################
 
 # Trading information
+string  logFilePath     = "c:/bb_log_tradelist_";   # Please make sure this path any drive except C:
 string  position        = "flat";
 string  prevPosition    = "";    # "", "long", "short"
 float   sma             = 100.0;
