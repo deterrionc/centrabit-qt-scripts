@@ -1,0 +1,9 @@
+[Variables]
+exchangeSetting=Centrabit
+STDDEVSETTING=1.0
+USETRAILINGSTOP=true
+SMALEN=20
+symbolSetting=LTC/BTC
+AMOUNT=0.1
+RESOL=1m
+STOPLOSSAT=0.01
